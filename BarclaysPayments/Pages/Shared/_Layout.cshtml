@@ -1,0 +1,124 @@
+﻿@using BarclaysPayments.Models
+@using Microsoft.Extensions.Options
+@using BarclaysPayments.Shared
+
+@inject BarclaysPayments.Data.ApplicationDbContext _context
+@inject IOptions<SystemSettings> ApplicationSettings
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BarclaysPayments</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/twitter-bootstrap/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" />
+        <link rel="stylesheet" href="~/lib/datatables/css/dataTables.bootstrap4.css" />
+        <link rel="stylesheet" href="//cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap4.css" />
+        <link rel="stylesheet" href="//cdn.datatables.net/scroller/2.0.0/css/scroller.bootstrap4.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/twitter-bootstrap/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+              crossorigin="anonymous" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" crossorigin="anonymous" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap4.min.css" />
+        <link rel="stylesheet" href="//cdn.datatables.net/buttons/1.6.4/css/buttons.bootstrap4.min.css" />
+        <link rel="stylesheet" href="//cdn.datatables.net/scroller/2.0.3/css/scroller.bootstrap4.min.css" />
+    </environment>
+
+    <link rel="stylesheet" href="~/css/slider.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-page="/Index">
+                <img class="NavLogo" src="~/images/WestLondonCollegeLogo.png" alt="West London College" />
+                <i class="fas fa-pound-sign"></i> Barclays Payments @@ West London College
+            </a>
+        </div>
+    </nav>
+    <div class="body-content">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="fixed-bottom bg-light">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <span class="text-muted">
+                        <i class="far fa-copyright"></i> 2020 West London College
+                    </span>
+                </div>
+                <div class="col text-right">
+                    <span class="text-muted">Barclays Payments @ApplicationSettings.Value.Version</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
+        <script src="~/lib/twitter-bootstrap/js/bootstrap.bundle.js" asp-append-version="true"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
+        <script src="~/lib/datatables/js/jquery.dataTables.js"></script>
+
+        <script src="//cdn.datatables.net/plug-ins/1.10.19/sorting/datetime-moment.js"></script>
+        <script src="//cdn.datatables.net/plug-ins/1.10.19/api/order.neutral().js"></script>
+        <script src="//cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.js"></script>
+        <script src="//cdn.datatables.net/buttons/1.6.0/js/buttons.bootstrap.js"></script>
+        <script src="//cdn.datatables.net/buttons/1.6.0/js/buttons.html5.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/3.2.0/jszip.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.62/pdfmake.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.62/vfs_fonts.js"></script>
+        <script src="//cdn.datatables.net/buttons/1.6.1/js/buttons.colVis.js"></script>
+        <script src="//cdn.datatables.net/buttons/1.6.1/js/buttons.print.js"></script>
+        <script src="//cdn.datatables.net/colreorder/1.5.2/js/dataTables.colReorder.js"></script>
+        <script src="//cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.js"></script>
+        <script src="//cdn.datatables.net/scroller/2.0.1/js/dataTables.scroller.js"></script>
+        <script src="~/lib/datatables/js/dataTables.bootstrap4.js"></script>
+        <script src="~/lib/marked/marked.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous">
+        </script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"
+                asp-fallback-src="~/lib/twitter-bootstrap/js/bootstrap.bundle.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous">
+        </script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"></script>
+        <script src="//cdn.datatables.net/plug-ins/1.10.21/sorting/datetime-moment.js"></script>
+        <script src="//cdn.datatables.net/plug-ins/1.10.21/api/order.neutral().js"></script>
+        <script src="//cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js"></script>
+        <script src="//cdn.datatables.net/buttons/1.6.4/js/buttons.bootstrap.min.js"></script>
+        <script src="//cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/3.5.0/jszip.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.min.js"></script>
+        <script src="//cdn.datatables.net/buttons/1.6.4/js/buttons.colVis.min.js"></script>
+        <script src="//cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js"></script>
+        <script src="//cdn.datatables.net/colreorder/1.5.2/js/dataTables.colReorder.min.js"></script>
+        <script src="//cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
+        <script src="//cdn.datatables.net/scroller/2.0.3/js/dataTables.scroller.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/marked/1.2.2/marked.min.js"></script>
+    </environment>
+
+    <script src="~/js/modals.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

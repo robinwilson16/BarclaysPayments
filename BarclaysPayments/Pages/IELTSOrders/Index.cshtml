@@ -1,0 +1,78 @@
+﻿@page
+@model BarclaysPayments.Pages.IELTSOrders.IndexModel
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IELTSOrder[0].IELTSTestAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IELTSOrder[0].IELTSTestDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IELTSOrder[0].TestType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IELTSOrder[0].PracticeTestAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IELTSOrder[0].PracticeMaterialsAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IELTSOrder[0].PracticeTestBooked)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IELTSOrder[0].PracticeMaterialsSent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IELTSOrder[0].BarclaysPayment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IELTSOrder[0].OrderStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.IELTSOrder) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IELTSTestAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IELTSTestDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TestType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PracticeTestAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PracticeMaterialsAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PracticeTestBooked)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PracticeMaterialsSent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BarclaysPayment.CN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderStatus.OrderStatusID)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.IELTSOrderID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.IELTSOrderID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.IELTSOrderID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

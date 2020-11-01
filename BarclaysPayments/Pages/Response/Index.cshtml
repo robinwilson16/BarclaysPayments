@@ -1,0 +1,150 @@
+﻿@page
+@model BarclaysPayments.Pages.Response.IndexModel
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysResponse[0].ORDERID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysResponse[0].PAYID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysResponse[0].PAYMENT_REFERENCE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysResponse[0].TRXDATE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysResponse[0].STATUS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysResponse[0].NCERROR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysResponse[0].AAVADDRESS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysResponse[0].ACCEPTANCE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysResponse[0].AMOUNT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysResponse[0].BRAND)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysResponse[0].CARDNO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysResponse[0].CN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysResponse[0].COMPLUS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysResponse[0].CURRENCY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysResponse[0].ED)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysResponse[0].IP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysResponse[0].PM)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysResponse[0].CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysResponse[0].CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysResponse[0].UpdatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysResponse[0].UpdatedBy)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.BarclaysResponse) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ORDERID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PAYID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PAYMENT_REFERENCE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TRXDATE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.STATUS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NCERROR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AAVADDRESS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ACCEPTANCE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AMOUNT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BRAND)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CARDNO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.COMPLUS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CURRENCY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ED)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedBy)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.BarclaysResponseID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.BarclaysResponseID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.BarclaysResponseID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

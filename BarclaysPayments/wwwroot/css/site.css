@@ -1,0 +1,213 @@
+﻿body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/*Stop modals from expanding past screen height*/
+.modal-body {
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+body.modal-open #LoadingModal {
+    display: flex !important;
+    height: 100%;
+} 
+
+body.modal-open #LoadingModal .modal-dialog {
+    margin: auto;
+    width: 400px;
+}
+
+.DataLoading h1 {
+    text-align: center;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    font-size: 3em;
+}
+
+.Spinner {
+    font-size: 2em;
+}
+
+.LoadingArea {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    font-size: 3em;
+}
+
+nav .NavLogo {
+    margin-top: -10px;
+    margin-bottom: -10px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    padding: 2px;
+}
+
+h1.LoadingAnim {
+    font-size: 4em;
+}
+
+.Spacer {
+    margin-top: 20px;
+}
+
+.SectionBackground {
+    background-color: #f4f6f6;
+    border-top: 1px solid #e0e2e2;
+    border-bottom: 1px solid #e0e2e2;
+}
+
+.SuccessfulTransaction {
+    background-color: #66BB6A;
+    color: #ffffff;
+    padding: 4px;
+}
+
+.UnsuccessfulTransaction {
+    background-color: #EF5350;
+    color: #ffffff;
+    padding: 4px;
+}
+
+.OrderStatus1 {
+    background-color: #42A5F5;
+    color: #ffffff;
+    padding: 4px;
+}
+
+.OrderStatus2 {
+    background-color: #FFA726;
+    color: #ffffff;
+    padding: 4px;
+}
+
+.OrderStatus3 {
+    background-color: #D4E157;
+    color: #ffffff;
+    padding: 4px;
+}
+
+.dataList {
+    width: 100%;
+    border-radius: 4px;
+    /*background-color: #f9f9f9;*/
+    margin-bottom: 8px;
+}
+
+.dataList th {
+    height: 40px;
+}
+
+.dataList tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+.dataList tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+.dataList tr {
+    border-bottom: 1px solid #ffffff;
+}
+
+.dataList th,
+.dataList td {
+    padding: 2px;
+    vertical-align: middle;
+}
+
+ul.dt-button-collection {
+    top: -300px !important;
+    height: 300px !important;
+    overflow-y: scroll;
+}
+
+ul.dt-button-collection li a:link,
+ul.dt-button-collection li a:active,
+ul.dt-button-collection li a:visited {
+    background-color: #6c757d;
+    color: #ffffff;
+    display: block;
+    margin: 4px;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+ul.dt-button-collection li a:hover {
+    background-color: #6c757d;
+    color: #ffffff;
+    display: block;
+    margin: 4px;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+ul.dt-button-collection li.active a:link,
+ul.dt-button-collection li.active a:active,
+ul.dt-button-collection li.active a:visited {
+    background-color: #007bff;
+    color: #ffffff;
+    display: block;
+    margin: 4px;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+ul.dt-button-collection li.active a:hover {
+    background-color: #007bff;
+    color: #ffffff;
+    display: block;
+    margin: 4px;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.bd-callout {
+    padding: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid #eee;
+    border-left-width: .25rem;
+    border-radius: .25rem
+}
+
+.bd-callout > h4 {
+    margin-top: 0;
+    margin-bottom: .25rem
+}
+
+.bd-callout p:last-child {
+    margin-bottom: 0
+}
+
+.bd-callout code {
+    border-radius: .25rem
+}
+
+.bd-callout + .bd-callout {
+    margin-top: -.25rem
+}
+
+.bd-callout-info {
+    border-left-color: #5bc0de
+}
+
+.bd-callout-info > h4 {
+    color: #5bc0de
+}
+
+.bd-callout-warning {
+    border-left-color: #f0ad4e
+}
+
+.bd-callout-warning > h4 {
+    color: #f0ad4e
+}
+
+.bd-callout-danger {
+    border-left-color: #d9534f
+}
+
+.bd-callout-danger > h4 {
+    color: #d9534f
+}

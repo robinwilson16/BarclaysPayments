@@ -1,0 +1,234 @@
+﻿@page
+@model BarclaysPayments.Pages.IELTSPayments.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container Spacer">
+    <div class="row">
+        <div class="col-md">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md">
+                        <div class="alert alert-primary text-center" role="alert">
+                            <h4 class="alert-heading"><i class="fas fa-info-circle"></i> New Payment to West London College</h4>
+                            <p>Please review the details below to make sure you are happy to proceed with this payment</p>
+                            <hr />
+                            <p class="mb-0">When you press the Make Payment button you will be securely taken to Barclays EPDQ, the college's payment processor, where you will be asked to provide your debit/credit card details</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @if (@Model.FormSubmitted != true)
+            {
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="bd-callout bd-callout-warning">
+                                <div class="row">
+                                    <div class="col-md">
+                                        <div class="row">
+                                            <div class="col-4 col-form-label">
+                                                Student Name
+                                            </div>
+                                            <div class="col-8">
+                                                @Html.DisplayFor(model => model.BarclaysPayment.CN)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <div class="row">
+                                            <div class="col-4 col-form-label">
+                                                @Html.DisplayNameFor(model => model.BarclaysPayment.EMAIL)
+                                            </div>
+                                            <div class="col-8">
+                                                @Html.DisplayFor(model => model.BarclaysPayment.EMAIL)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @if(@Model.PracticeTestDate > DateTime.MinValue) {
+                                <div class="row">
+                                    <div class="col-md">
+                                        <div class="row">
+                                            <div class="col-4 col-form-label">
+                                                Test Date
+                                            </div>
+                                            <div class="col-8">
+                                                @Model.PracticeTestDate.ToString("dd MMM yyyy")
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="bd-callout bd-callout-info">
+                                <div class="row">
+                                    <div class="col-md">
+                                        <div class="row">
+                                            <div class="col-md">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Item</th>
+                                                            <th scope="col">Price</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    @if(Model.IELTSTestAmountValue > 0) {
+                                                        <tr>
+                                                            <td><i class="fas fa-check"></i> IELTS Test</td>
+                                                            <td class="text-right"><i class="fas fa-pound-sign"></i>@Model.IELTSTestAmountValue</td>
+                                                        </tr>
+                                                    }
+                                                    
+                                                    @if(Model.PracticeTestAmountValue > 0) {
+                                                        <tr>
+                                                            <td><i class="fas fa-check"></i> Practice Test</td>
+                                                            <td class="text-right"><i class="fas fa-pound-sign"></i>@Model.PracticeTestAmountValue</td>
+                                                        </tr>
+                                                    }
+
+                                                    @if(Model.PracticeMaterialsAmountValue > 0) {
+                                                        <tr>
+                                                            <td><i class="fas fa-check"></i> Practice Materials</td>
+                                                            <td class="text-right"><i class="fas fa-pound-sign"></i>@Model.PracticeMaterialsAmountValue</td>
+                                                        </tr>
+                                                    }
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th scope="col">&nbsp;</th>
+                                                            <th scope="col" class="text-right">@Html.DisplayFor(model => model.BarclaysPayment.AMOUNT)</th>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="jumbotron text-center">
+                                <div class="container">
+                                    <p class="lead">@Html.DisplayNameFor(model => model.BarclaysPayment.AMOUNT)</p>
+                                    <h1 class="display-4">@Html.DisplayFor(model => model.BarclaysPayment.AMOUNT)</h1>
+                                    <p class="text-muted">@Html.DisplayNameFor(model => model.BarclaysPayment.ORDERID): @Html.DisplayFor(model => model.BarclaysPayment.ORDERID)</p>
+                                </div>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md d-md-block d-sm-none">
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            <form method="post" id="MakePayment">
+                                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                                <input asp-for="BarclaysPayment.ORDERID" class="form-control" hidden />
+                                                <input asp-for="BarclaysPayment.AMOUNT" class="form-control" hidden />
+                                                <input asp-for="BarclaysPayment.CN" class="form-control" hidden />
+                                                <input asp-for="BarclaysPayment.EMAIL" class="form-control" hidden />
+                                                <input asp-for="BarclaysPayment.OWNERZIP" class="form-control" hidden />
+                                                <input asp-for="BarclaysPayment.OWNERADDRESS" class="form-control" hidden />
+                                                <input asp-for="BarclaysPayment.OWNERCTY" class="form-control" hidden />
+                                                <input asp-for="BarclaysPayment.OWNERTOWN" class="form-control" hidden />
+                                                <input asp-for="BarclaysPayment.OWNERTELNO" class="form-control" hidden />
+                                                <input asp-for="BarclaysPayment.PSPID" class="form-control" hidden />
+                                                <input asp-for="BarclaysPayment.CURRENCY" class="form-control" hidden />
+                                                <input asp-for="BarclaysPayment.LANGUAGE" class="form-control" hidden />
+                                                <input asp-for="BarclaysPayment.TITLE" class="form-control" hidden />
+                                                <input asp-for="BarclaysPayment.BGCOLOR" class="form-control" hidden />
+                                                <input asp-for="BarclaysPayment.TXTCOLOR" class="form-control" hidden />
+                                                <input asp-for="BarclaysPayment.TBLBGCOLOR" class="form-control" hidden />
+                                                <input asp-for="BarclaysPayment.TBLTXTCOLOR" class="form-control" hidden />
+                                                <input asp-for="BarclaysPayment.BUTTONBGCOLOR" class="form-control" hidden />
+                                                <input asp-for="BarclaysPayment.BUTTONTXTCOLOR" class="form-control" hidden />
+                                                <input asp-for="BarclaysPayment.LOGO" class="form-control" hidden />
+                                                <input asp-for="BarclaysPayment.FONTTYPE" class="form-control" hidden />
+                                                <input asp-for="BarclaysPayment.ACCEPTURL" class="form-control" hidden />
+                                                <input asp-for="BarclaysPayment.DECLINEURL" class="form-control" hidden />
+                                                <input asp-for="BarclaysPayment.EXCEPTIONURL" class="form-control" hidden />
+                                                <input asp-for="BarclaysPayment.CANCELURL" class="form-control" hidden />
+
+                                                <input type="hidden" id="SHAPassphrase" value="@Model.SHAPassphrase" />
+                                                <input type="hidden" id="FormDestinationID" value="@Model.FormDestinationID" />
+                                                <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-pound-sign"></i> Make Payment</button>
+                                            </form>
+                                        </div>
+                                        <div class="col-md d-md-block d-sm-none">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+            else
+            {
+                if (Model.FormSaved == true)
+                {
+                    <div class="container Spacer">
+                        <div class="row">
+                            <div class="col-md">
+                                <div class="alert alert-success text-center" role="alert">
+                                    <h4 class="alert-heading"><i class="fas fa-info-circle"></i> Payment Submitted</h4>
+                                    <p>
+                                        You may now close this window.
+                                    </p>
+                                    <a class="btn btn-success" href="https://www.wlc.ac.uk"><i class="fas fa-external-link-alt"></i> Go to the WLC Website</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="container Spacer">
+                        <div class="row">
+                            <div class="col-md">
+                                <div class="alert alert-danger text-center" role="alert">
+                                    <h4 class="alert-heading"><i class="fas fa-exclamation-circle"></i> Could Not Save Details</h4>
+                                    <p>
+                                        Sorry it was not possible to save your details.
+                                    </p>
+                                    <p>
+                                        Please re-scan the QR code in the entrance to check in.
+                                    </p>
+                                    <p class="text-right text-muted">
+                                        Error: CNS
+                                    </p>
+                                    <p class="text-right text-muted">
+                                        @*@Model.FormErrors*@
+                                        @Html.ValidationSummary()
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

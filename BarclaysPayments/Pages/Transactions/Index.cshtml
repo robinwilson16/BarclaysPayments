@@ -1,0 +1,264 @@
+﻿@page
+@model BarclaysPayments.Pages.Transactions.IndexModel
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].Forename)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].UniquePaymentRef)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].OnlineBookingRefNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].PaymentReasonCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].PaymentReasonName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].PaymentReasonOther)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].AmountDue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].EmailAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].TelNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].Address1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].Address2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].Address3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].PostCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].UpdatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].UpdatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].ResponseID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].AmountPaid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].ResponseStatusCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].ResponseStatusName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].BarclaysErrorCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].BarclaysErrorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].BarclaysErrorRetry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].AddressOK)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].ConfirmationID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].BarclaysPaymentID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].CardType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].CardNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].PaymentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].IPAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].IELTSOrderID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].IELTSTestAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].IELTSTestDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].PracticeTestAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].PracticeMaterialsAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].TestTypeCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].TestTypeName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Transaction) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Forename)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UniquePaymentRef)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OnlineBookingRefNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentReasonCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentReasonName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentReasonOther)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AmountDue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResponseID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AmountPaid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResponseStatusCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResponseStatusName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BarclaysErrorCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BarclaysErrorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BarclaysErrorRetry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressOK)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConfirmationID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BarclaysPaymentID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CardType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CardNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IPAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IELTSOrderID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IELTSTestAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IELTSTestDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PracticeTestAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PracticeMaterialsAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TestTypeCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TestTypeName)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.TransactionID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.TransactionID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.TransactionID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

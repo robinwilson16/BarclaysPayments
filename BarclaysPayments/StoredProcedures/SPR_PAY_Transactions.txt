@@ -1,0 +1,170 @@
+/*****************************************
+* Lists IELTS transactions for the       *
+* payment report                         *
+******************************************/
+
+CREATE PROCEDURE dbo.SPR_PAY_Transactions
+	@PaymentReason VARCHAR(20),
+	@OnlineBookingRefNo VARCHAR(50),
+	@Email VARCHAR(200),
+	@PaymentDateFrom DATETIME,
+	@PaymentDateTo DATETIME,
+	@OrderStatus INT,
+	@TestDateFrom DATETIME,
+	@TestDateTo DATETIME,
+	@TransactionID INT
+AS
+BEGIN
+	--DECLARE @PaymentReason VARCHAR(20) = NULL
+	--DECLARE @OnlineBookingRefNo VARCHAR(50) = NULL
+	--DECLARE @Email VARCHAR(200) = NULL
+	--DECLARE @PaymentDateFrom DATE = NULL
+	--DECLARE @PaymentDateTo DATE = NULL
+	--DECLARE @OrderStatus INT = NULL
+	--DECLARE @OrderDateFrom DATE = NULL
+	--DECLARE @OrderDateTo DATE = NULL
+	--DECLARE @TransactionID INT = NULL
+
+	SELECT
+		TransactionID = PAY.BarclaysPaymentID,
+		CustomerName = PAY.CN,
+		Surname = 
+			CASE
+				WHEN CHARINDEX ( ' ', REVERSE ( LTRIM ( RTRIM ( PAY.CN ) ) ) ) > 0 THEN 
+					RIGHT ( LTRIM ( RTRIM ( PAY.CN ) ), CHARINDEX ( ' ', REVERSE ( LTRIM ( RTRIM ( PAY.CN ) ) ) ) - 1 )
+				ELSE
+					PAY.CN
+			END,
+		Forename = 
+			CASE
+				WHEN CHARINDEX ( ' ', REVERSE ( LTRIM ( RTRIM ( PAY.CN ) ) ) ) > 0 THEN 
+					LEFT ( LTRIM ( RTRIM ( PAY.CN ) ), LEN ( LTRIM ( RTRIM ( PAY.CN ) ) ) - CHARINDEX ( ' ', REVERSE ( LTRIM ( RTRIM ( PAY.CN ) ) ) ) )
+				ELSE
+					PAY.CN
+			END,
+		UniquePaymentRef = PAY.UniquePaymentRef,
+		OnlineBookingRefNo = PAY.ORDERID,
+		PaymentReasonCode = PAY.PaymentReasonID,
+		PaymentReasonName = RSN.Description,
+		PaymentReasonOther = PAY.PaymentReasonOther,
+		AmountDue = PAY.AMOUNT,
+		EmailAddress = PAY.EMAIL,
+		TelNumber = PAY.OWNERTELNO,
+		Address1 = PAY.OWNERADDRESS,
+		Address2 = PAY.OWNERCTY,
+		Address3 = PAY.OWNERTOWN,
+		PostCode = PAY.OWNERZIP,
+		CreatedDate = PAY.CreatedDate,
+		CreatedBy = PAY.CreatedBy,
+		UpdatedDate = PAY.UpdatedDate,
+		UpdatedBy = PAY.UpdatedBy,
+		ResponseID = RES.BarclaysResponseID,
+		AmountPaid = RES.AMOUNT,
+		ResponseStatusCode = RES.STATUS,
+		ResponseStatusName = STA.Description,
+		BarclaysErrorCode = RES.NCERROR,
+		BarclaysErrorName = ERR.Description,
+		BarclaysErrorRetry = ERR.Retry,
+		AddressOK = RES.AAVADDRESS,
+		ConfirmationID = RES.ACCEPTANCE,
+		BarclaysPaymentID = RES.PAYID,
+		CardType = RES.BRAND,
+		CardNo = RES.CARDNO,
+		PaymentDate = RES.CreatedDate,
+		IPAddress = RES.IP,
+		IELTSOrderID = IEL.IELTSOrderID,
+		IELTSTestAmount = IEL.IELTSTestAmount,
+		IELTSTestDate = IEL.IELTSTestDate,
+		PracticeTestAmount = IEL.PracticeTestAmount,
+		PracticeMaterialsAmount = IEL.PracticeMaterialsAmount,
+		TestTypeCode = IEL.TestType,
+		TestTypeName = TT.Description,
+		OrderStatusCode = IEL.OrderStatusID,
+		OrderStatusName = OS.Description,
+		PracticeTestBooked = IEL.PracticeTestBooked,
+		PracticeMaterialsSent = IEL.PracticeMaterialsSent,
+		NumNotes = COALESCE ( N.NumNotes, 0 )
+	FROM PAY_BarclaysPayment PAY
+	INNER JOIN PAY_PaymentReason RSN
+		ON RSN.PaymentReasonID = PAY.PaymentReasonID
+	INNER JOIN PAY_BarclaysResponse RES --Changed to INNER JOIN to only include records where customer has not cancelled before reaching Barclays
+		ON RES.ORDERID = PAY.ORDERID
+	LEFT JOIN PAY_BarclaysErrorCode ERR
+		ON ERR.Code = RES.NCERROR
+	LEFT JOIN PAY_PaymentStatus STA
+		ON STA.Code = RES.STATUS
+	LEFT JOIN PAY_IELTSOrder IEL
+		ON IEL.BarclaysPaymentID = PAY.BarclaysPaymentID
+	LEFT JOIN PAY_IELTSTestType TT
+		ON TT.IELTSTestTypeID = IEL.TestType
+	LEFT JOIN PAY_OrderStatus OS
+		ON OS.OrderStatusID = IEL.OrderStatusID
+	LEFT JOIN (
+		SELECT
+			N.TransactionID,
+			NumNotes = COUNT ( N.NoteID )
+		FROM PAY_Note N
+		GROUP BY
+			N.TransactionID
+	) N
+		ON N.TransactionID = PAY.BarclaysPaymentID
+	WHERE
+		CASE
+			WHEN @PaymentReason IS NULL THEN 1
+			ELSE 
+				CASE
+					WHEN PAY.PaymentReasonID = @PaymentReason THEN 1
+					ELSE 0
+				END
+		END = 1
+		AND CASE
+			WHEN @OnlineBookingRefNo IS NULL THEN 1
+			ELSE 
+				CASE
+					WHEN PAY.ORDERID LIKE '%' + @OnlineBookingRefNo + '%' THEN 1
+					ELSE 0
+				END
+		END = 1
+		AND CASE
+			WHEN @Email IS NULL THEN 1
+			ELSE 
+				CASE
+					WHEN PAY.EMAIL LIKE '%' + @Email + '%' THEN 1
+					ELSE 0
+				END
+		END = 1
+		AND CASE
+			WHEN @PaymentDateFrom IS NULL THEN 1
+			ELSE 
+				CASE
+					WHEN CAST ( RES.CreatedDate AS DATE ) >= CAST ( @PaymentDateFrom AS DATE ) THEN 1
+					ELSE 0
+				END
+		END = 1
+		AND CASE
+			WHEN @PaymentDateTo IS NULL THEN 1
+			ELSE 
+				CASE
+					WHEN CAST ( RES.CreatedDate AS DATE ) <= CAST ( @PaymentDateTo AS DATE ) THEN 1
+					ELSE 0
+				END
+		END = 1
+		AND COALESCE ( IEL.OrderStatusID, 0 ) = COALESCE ( @OrderStatus, IEL.OrderStatusID, 0 )
+		AND CASE
+			WHEN @TestDateFrom IS NULL THEN 1
+			ELSE 
+				CASE
+					WHEN CAST ( IEL.IELTSTestDate AS DATE ) >= CAST ( @TestDateFrom AS DATE ) THEN 1
+					ELSE 0
+				END
+		END = 1
+		AND CASE
+			WHEN @TestDateTo IS NULL THEN 1
+			ELSE 
+				CASE
+					WHEN CAST ( IEL.IELTSTestDate AS DATE ) <= CAST ( @TestDateTo AS DATE ) THEN 1
+					ELSE 0
+				END
+		END = 1
+		AND PAY.BarclaysPaymentID = COALESCE ( @TransactionID, PAY.BarclaysPaymentID )
+END

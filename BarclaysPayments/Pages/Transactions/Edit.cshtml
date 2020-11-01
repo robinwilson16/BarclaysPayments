@@ -1,0 +1,224 @@
+﻿@page "{id:int?}"
+@model BarclaysPayments.Pages.Transactions.EditModel
+
+<h4>Transaction</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Transaction.TransactionID" />
+            <div class="form-group">
+                <label asp-for="Transaction.CustomerName" class="control-label"></label>
+                <input asp-for="Transaction.CustomerName" class="form-control" />
+                <span asp-validation-for="Transaction.CustomerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.Surname" class="control-label"></label>
+                <input asp-for="Transaction.Surname" class="form-control" />
+                <span asp-validation-for="Transaction.Surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.Forename" class="control-label"></label>
+                <input asp-for="Transaction.Forename" class="form-control" />
+                <span asp-validation-for="Transaction.Forename" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.UniquePaymentRef" class="control-label"></label>
+                <input asp-for="Transaction.UniquePaymentRef" class="form-control" />
+                <span asp-validation-for="Transaction.UniquePaymentRef" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.OnlineBookingRefNo" class="control-label"></label>
+                <input asp-for="Transaction.OnlineBookingRefNo" class="form-control" />
+                <span asp-validation-for="Transaction.OnlineBookingRefNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.PaymentReasonCode" class="control-label"></label>
+                <input asp-for="Transaction.PaymentReasonCode" class="form-control" />
+                <span asp-validation-for="Transaction.PaymentReasonCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.PaymentReasonName" class="control-label"></label>
+                <input asp-for="Transaction.PaymentReasonName" class="form-control" />
+                <span asp-validation-for="Transaction.PaymentReasonName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.PaymentReasonOther" class="control-label"></label>
+                <input asp-for="Transaction.PaymentReasonOther" class="form-control" />
+                <span asp-validation-for="Transaction.PaymentReasonOther" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.AmountDue" class="control-label"></label>
+                <input asp-for="Transaction.AmountDue" class="form-control" />
+                <span asp-validation-for="Transaction.AmountDue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.EmailAddress" class="control-label"></label>
+                <input asp-for="Transaction.EmailAddress" class="form-control" />
+                <span asp-validation-for="Transaction.EmailAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.TelNumber" class="control-label"></label>
+                <input asp-for="Transaction.TelNumber" class="form-control" />
+                <span asp-validation-for="Transaction.TelNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.Address1" class="control-label"></label>
+                <input asp-for="Transaction.Address1" class="form-control" />
+                <span asp-validation-for="Transaction.Address1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.Address2" class="control-label"></label>
+                <input asp-for="Transaction.Address2" class="form-control" />
+                <span asp-validation-for="Transaction.Address2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.Address3" class="control-label"></label>
+                <input asp-for="Transaction.Address3" class="form-control" />
+                <span asp-validation-for="Transaction.Address3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.PostCode" class="control-label"></label>
+                <input asp-for="Transaction.PostCode" class="form-control" />
+                <span asp-validation-for="Transaction.PostCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.CreatedDate" class="control-label"></label>
+                <input asp-for="Transaction.CreatedDate" class="form-control" />
+                <span asp-validation-for="Transaction.CreatedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.CreatedBy" class="control-label"></label>
+                <input asp-for="Transaction.CreatedBy" class="form-control" />
+                <span asp-validation-for="Transaction.CreatedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.UpdatedDate" class="control-label"></label>
+                <input asp-for="Transaction.UpdatedDate" class="form-control" />
+                <span asp-validation-for="Transaction.UpdatedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.UpdatedBy" class="control-label"></label>
+                <input asp-for="Transaction.UpdatedBy" class="form-control" />
+                <span asp-validation-for="Transaction.UpdatedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.ResponseID" class="control-label"></label>
+                <input asp-for="Transaction.ResponseID" class="form-control" />
+                <span asp-validation-for="Transaction.ResponseID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.AmountPaid" class="control-label"></label>
+                <input asp-for="Transaction.AmountPaid" class="form-control" />
+                <span asp-validation-for="Transaction.AmountPaid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.ResponseStatusCode" class="control-label"></label>
+                <input asp-for="Transaction.ResponseStatusCode" class="form-control" />
+                <span asp-validation-for="Transaction.ResponseStatusCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.ResponseStatusName" class="control-label"></label>
+                <input asp-for="Transaction.ResponseStatusName" class="form-control" />
+                <span asp-validation-for="Transaction.ResponseStatusName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.BarclaysErrorCode" class="control-label"></label>
+                <input asp-for="Transaction.BarclaysErrorCode" class="form-control" />
+                <span asp-validation-for="Transaction.BarclaysErrorCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.BarclaysErrorName" class="control-label"></label>
+                <input asp-for="Transaction.BarclaysErrorName" class="form-control" />
+                <span asp-validation-for="Transaction.BarclaysErrorName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.BarclaysErrorRetry" class="control-label"></label>
+                <input asp-for="Transaction.BarclaysErrorRetry" class="form-control" />
+                <span asp-validation-for="Transaction.BarclaysErrorRetry" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.AddressOK" class="control-label"></label>
+                <input asp-for="Transaction.AddressOK" class="form-control" />
+                <span asp-validation-for="Transaction.AddressOK" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.ConfirmationID" class="control-label"></label>
+                <input asp-for="Transaction.ConfirmationID" class="form-control" />
+                <span asp-validation-for="Transaction.ConfirmationID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.BarclaysPaymentID" class="control-label"></label>
+                <input asp-for="Transaction.BarclaysPaymentID" class="form-control" />
+                <span asp-validation-for="Transaction.BarclaysPaymentID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.CardType" class="control-label"></label>
+                <input asp-for="Transaction.CardType" class="form-control" />
+                <span asp-validation-for="Transaction.CardType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.CardNo" class="control-label"></label>
+                <input asp-for="Transaction.CardNo" class="form-control" />
+                <span asp-validation-for="Transaction.CardNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.PaymentDate" class="control-label"></label>
+                <input asp-for="Transaction.PaymentDate" class="form-control" />
+                <span asp-validation-for="Transaction.PaymentDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.IPAddress" class="control-label"></label>
+                <input asp-for="Transaction.IPAddress" class="form-control" />
+                <span asp-validation-for="Transaction.IPAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.IELTSOrderID" class="control-label"></label>
+                <input asp-for="Transaction.IELTSOrderID" class="form-control" />
+                <span asp-validation-for="Transaction.IELTSOrderID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.IELTSTestAmount" class="control-label"></label>
+                <input asp-for="Transaction.IELTSTestAmount" class="form-control" />
+                <span asp-validation-for="Transaction.IELTSTestAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.IELTSTestDate" class="control-label"></label>
+                <input asp-for="Transaction.IELTSTestDate" class="form-control" />
+                <span asp-validation-for="Transaction.IELTSTestDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.PracticeTestAmount" class="control-label"></label>
+                <input asp-for="Transaction.PracticeTestAmount" class="form-control" />
+                <span asp-validation-for="Transaction.PracticeTestAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.PracticeMaterialsAmount" class="control-label"></label>
+                <input asp-for="Transaction.PracticeMaterialsAmount" class="form-control" />
+                <span asp-validation-for="Transaction.PracticeMaterialsAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.TestTypeCode" class="control-label"></label>
+                <input asp-for="Transaction.TestTypeCode" class="form-control" />
+                <span asp-validation-for="Transaction.TestTypeCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.TestTypeName" class="control-label"></label>
+                <input asp-for="Transaction.TestTypeName" class="form-control" />
+                <span asp-validation-for="Transaction.TestTypeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

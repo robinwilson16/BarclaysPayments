@@ -1,0 +1,121 @@
+﻿@page
+@model BarclaysPayments.Pages.Response.ResponseFormModel
+@{
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md">
+            <form method="post" action="/Response/Create">
+                <div class="form-group row">
+                    <label for="ORDERID" class="col-sm-2 col-form-label">ORDERID</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="ORDERID" name="ORDERID" placeholder="ORDERID">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="PAYID" class="col-sm-2 col-form-label">PAYID</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="PAYID" name="PAYID" placeholder="PAYID">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="PAYMENT_REFERENCE" class="col-sm-2 col-form-label">PAYMENT_REFERENCE</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="PAYMENT_REFERENCE" name="PAYMENT_REFERENCE" placeholder="PAYMENT_REFERENCE">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="TRXDATE" class="col-sm-2 col-form-label">TRXDATE</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="TRXDATE" name="TRXDATE" placeholder="TRXDATE">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="STATUS" class="col-sm-2 col-form-label">STATUS</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="STATUS" name="STATUS" placeholder="STATUS">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="NCERROR" class="col-sm-2 col-form-label">NCERROR</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="NCERROR" name="NCERROR" placeholder="NCERROR">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="AAVADDRESS" class="col-sm-2 col-form-label">AAVADDRESS</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="AAVADDRESS" name="AAVADDRESS" placeholder="AAVADDRESS">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="ACCEPTANCE" class="col-sm-2 col-form-label">ACCEPTANCE</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="ACCEPTANCE" name="ACCEPTANCE" placeholder="ACCEPTANCE">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="AMOUNT" class="col-sm-2 col-form-label">AMOUNT</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="AMOUNT" name="AMOUNT" placeholder="AMOUNT">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="BRAND" class="col-sm-2 col-form-label">BRAND</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="BRAND" name="BRAND" placeholder="BRAND">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="CARDNO" class="col-sm-2 col-form-label">CARDNO</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="CARDNO" name="CARDNO" placeholder="CARDNO">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="CN" class="col-sm-2 col-form-label">CN</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="CN" name="CN" placeholder="CN">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="COMPLUS" class="col-sm-2 col-form-label">COMPLUS</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="COMPLUS" name="COMPLUS" placeholder="COMPLUS">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="CURRENCY" class="col-sm-2 col-form-label">CURRENCY</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="CURRENCY" name="CURRENCY" placeholder="CURRENCY">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="ED" class="col-sm-2 col-form-label">ED</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="ED" name="ED" placeholder="ED">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="IP" class="col-sm-2 col-form-label">IP</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="IP" name="IP" placeholder="IP">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="PM" class="col-sm-2 col-form-label">PM</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="PM" name="PM" placeholder="PM">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

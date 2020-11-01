@@ -1,0 +1,66 @@
+﻿@page
+@model BarclaysPayments.Pages.IELTSOrders.CreateModel
+
+<h4>IELTSOrder</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IELTSOrder.BarclaysPaymentID" class="control-label"></label>
+                <select asp-for="IELTSOrder.BarclaysPaymentID" class ="form-control" asp-items="ViewBag.BarclaysPaymentID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IELTSOrder.IELTSTestAmount" class="control-label"></label>
+                <input asp-for="IELTSOrder.IELTSTestAmount" class="form-control" />
+                <span asp-validation-for="IELTSOrder.IELTSTestAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IELTSOrder.IELTSTestDate" class="control-label"></label>
+                <input asp-for="IELTSOrder.IELTSTestDate" class="form-control" />
+                <span asp-validation-for="IELTSOrder.IELTSTestDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IELTSOrder.TestType" class="control-label"></label>
+                <input asp-for="IELTSOrder.TestType" class="form-control" />
+                <span asp-validation-for="IELTSOrder.TestType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IELTSOrder.PracticeTestAmount" class="control-label"></label>
+                <input asp-for="IELTSOrder.PracticeTestAmount" class="form-control" />
+                <span asp-validation-for="IELTSOrder.PracticeTestAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IELTSOrder.PracticeMaterialsAmount" class="control-label"></label>
+                <input asp-for="IELTSOrder.PracticeMaterialsAmount" class="form-control" />
+                <span asp-validation-for="IELTSOrder.PracticeMaterialsAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IELTSOrder.OrderStatusID" class="control-label"></label>
+                <select asp-for="IELTSOrder.OrderStatusID" class ="form-control" asp-items="ViewBag.OrderStatusID"></select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IELTSOrder.PracticeTestBooked" /> @Html.DisplayNameFor(model => model.IELTSOrder.PracticeTestBooked)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IELTSOrder.PracticeMaterialsSent" /> @Html.DisplayNameFor(model => model.IELTSOrder.PracticeMaterialsSent)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

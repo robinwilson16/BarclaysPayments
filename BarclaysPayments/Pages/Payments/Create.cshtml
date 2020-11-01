@@ -1,0 +1,265 @@
+﻿@page
+@model BarclaysPayments.Pages.Payments.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container Spacer">
+    <div class="row">
+        <div class="col-md">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md">
+                        <div class="alert alert-primary text-center" role="alert">
+                            <h4 class="alert-heading"><i class="fas fa-info-circle"></i> New Payment Request Link</h4>
+                            <p>Please input the payments details below which will generate a unique payment link which you can then share with the payee to enable them to securely make the payment via Barclays EPDQ Payment System</p>
+                            <hr />
+                            <p class="mb-0">The details you enter below are what will be shown to the payee when they click the link</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @if (@Model.FormSubmitted != true)
+            {
+                <div class="container">
+                    <form method="post" id="CreatePayment">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="row">
+                            <div class="col-md">
+                                <div class="bd-callout bd-callout-info">
+                                    <div class="row">
+                                        <div class="col-md">
+                                            <div class="form-group row">
+                                                <label asp-for="BarclaysPayment.PaymentReasonID" class="col-md-4 col-form-label"></label>
+                                                <div class="col-md-8">
+                                                    <select asp-for="BarclaysPayment.PaymentReasonID" class="form-control BarclaysExclude" asp-items="Model.PaymentReason">
+                                                        <option value="" selected disabled>Please Select...</option>
+                                                    </select>
+                                                    <span asp-validation-for="BarclaysPayment.PaymentReasonID" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-group row">
+                                                <label asp-for="BarclaysPayment.PaymentReasonOther" class="col-md-4 col-form-label"></label>
+                                                <div class="col-md-8">
+                                                    <input asp-for="BarclaysPayment.PaymentReasonOther" class="form-control" />
+                                                    <span asp-validation-for="BarclaysPayment.PaymentReasonOther" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md">
+                                <div class="bd-callout bd-callout-warning">
+                                    <div class="row">
+                                        <div class="col-md">
+                                            <div class="form-group row">
+                                                <label asp-for="BarclaysPayment.CN" class="col-md col-form-label"></label>
+                                                <div class="col-md">
+                                                    <input asp-for="BarclaysPayment.CN" class="form-control" />
+                                                    <span asp-validation-for="BarclaysPayment.CN" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md">
+                                            <div class="form-group row">
+                                                <label asp-for="BarclaysPayment.EMAIL" class="col-md-4 col-form-label"></label>
+                                                <div class="col-md-8">
+                                                    <input asp-for="BarclaysPayment.EMAIL" class="form-control" />
+                                                    <span asp-validation-for="BarclaysPayment.EMAIL" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-group row">
+                                                <label asp-for="BarclaysPayment.OWNERTELNO" class="col-md-4 col-form-label"></label>
+                                                <div class="col-md-8">
+                                                    <input asp-for="BarclaysPayment.OWNERTELNO" class="form-control" />
+                                                    <span asp-validation-for="BarclaysPayment.OWNERTELNO" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md">
+                                            <div class="form-group row">
+                                                <label asp-for="BarclaysPayment.OWNERADDRESS" class="col-md-4 col-form-label"></label>
+                                                <div class="col-md-8">
+                                                    <input asp-for="BarclaysPayment.OWNERADDRESS" class="form-control" />
+                                                    <span asp-validation-for="BarclaysPayment.OWNERADDRESS" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-group row">
+                                                <label asp-for="BarclaysPayment.OWNERCTY" class="col-md-4 col-form-label"></label>
+                                                <div class="col-md-8">
+                                                    <input asp-for="BarclaysPayment.OWNERCTY" class="form-control" />
+                                                    <span asp-validation-for="BarclaysPayment.OWNERCTY" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md">
+                                            <div class="form-group row">
+                                                <label asp-for="BarclaysPayment.OWNERTOWN" class="col-md-4 col-form-label"></label>
+                                                <div class="col-md-8">
+                                                    <input asp-for="BarclaysPayment.OWNERTOWN" class="form-control" />
+                                                    <span asp-validation-for="BarclaysPayment.OWNERTOWN" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-group row">
+                                                <label asp-for="BarclaysPayment.OWNERZIP" class="col-md-4 col-form-label"></label>
+                                                <div class="col-md-8">
+                                                    <input asp-for="BarclaysPayment.OWNERZIP" class="form-control" />
+                                                    <span asp-validation-for="BarclaysPayment.OWNERZIP" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md">
+                                <div class="bd-callout">
+                                    <div class="row">
+                                        <div class="col-md">
+                                            <div class="form-group row">
+                                                <label asp-for="BarclaysPayment.AMOUNT" class="col-md-4 col-form-label"></label>
+                                                <div class="col-md-8">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">&pound;</div>
+                                                        </div>
+                                                        <input asp-for="BarclaysPayment.AMOUNT" class="form-control" />
+                                                    </div>
+                                                    <span asp-validation-for="BarclaysPayment.AMOUNT" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-group row">
+                                                <label asp-for="BarclaysPayment.ORDERID" class="col-md-4 col-form-label"></label>
+                                                <div class="col-md-8">
+                                                    <input asp-for="BarclaysPayment.ORDERID" class="form-control" />
+                                                    <span asp-validation-for="BarclaysPayment.ORDERID" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md">
+                                            <div class="form-group row">
+                                                <div class="col-md d-md-block d-sm-none">
+
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input asp-for="BarclaysPayment.PSPID" class="form-control" hidden />
+                                                    <input asp-for="BarclaysPayment.CURRENCY" class="form-control" hidden />
+                                                    <input asp-for="BarclaysPayment.LANGUAGE" class="form-control" hidden />
+                                                    <input asp-for="BarclaysPayment.TITLE" class="form-control" hidden />
+                                                    <input asp-for="BarclaysPayment.BGCOLOR" class="form-control" hidden />
+                                                    <input asp-for="BarclaysPayment.TXTCOLOR" class="form-control" hidden />
+                                                    <input asp-for="BarclaysPayment.TBLBGCOLOR" class="form-control" hidden />
+                                                    <input asp-for="BarclaysPayment.TBLTXTCOLOR" class="form-control" hidden />
+                                                    <input asp-for="BarclaysPayment.BUTTONBGCOLOR" class="form-control" hidden />
+                                                    <input asp-for="BarclaysPayment.BUTTONTXTCOLOR" class="form-control" hidden />
+                                                    <input asp-for="BarclaysPayment.LOGO" class="form-control" hidden />
+                                                    <input asp-for="BarclaysPayment.FONTTYPE" class="form-control" hidden />
+                                                    <input asp-for="BarclaysPayment.ACCEPTURL" class="form-control" hidden />
+                                                    <input asp-for="BarclaysPayment.DECLINEURL" class="form-control" hidden />
+                                                    <input asp-for="BarclaysPayment.EXCEPTIONURL" class="form-control" hidden />
+                                                    <input asp-for="BarclaysPayment.CANCELURL" class="form-control" hidden />
+
+                                                    <input type="hidden" id="SHAPassphrase" value="@Model.SHAPassphrase" />
+                                                    <input type="hidden" id="FormDestinationID" value="@Model.FormDestinationID" />
+                                                    <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-pound-sign"></i> Create Payment Link</button>
+                                                </div>
+                                                <div class="col-md d-md-block d-sm-none">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            }
+            else
+            {
+                if (Model.FormSaved == true)
+                {
+                    <div class="container Spacer">
+                        <div class="row">
+                            <div class="col-md">
+                                <div class="alert alert-success text-center" role="alert">
+                                    <h4 class="alert-heading"><i class="fas fa-info-circle"></i> Payment Created</h4>
+                                    <p>
+                                        The payment has now been created. Please share the link below with the learner/employer:
+                                        <kbd class="PaymentURL">https://apps.wlc.ac.uk/BarclaysPayments/Payments/Pay/@Model.UniquePaymentRef</kbd>
+                                        <input class="PaymentURLInput" type="hidden" value="https://apps.wlc.ac.uk/BarclaysPayments/Payments/Pay/@Model.UniquePaymentRef" />
+                                    </p>
+                                    <p>
+                                        You can also use the button below to take you to the payment page in case you are completing it over the phone on the learner's/employer's behalf.
+                                    </p>
+                                    <button class="btn btn-primary CopyPaymentLink"><i class="fas fa-copy"></i> Copy Link to Clipboard</button>
+                                    <button class="btn btn-secondary OpenPaymentLink"><i class="fas fa-external-link-alt"></i> Open Payment Link in New Tab</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="container Spacer">
+                        <div class="row">
+                            <div class="col-md">
+                                <div class="alert alert-danger text-center" role="alert">
+                                    <h4 class="alert-heading"><i class="fas fa-exclamation-circle"></i> Could Not Create Payment</h4>
+                                    <p>
+                                        Sorry it was not possible to create the payment.
+                                    </p>
+                                    <p>
+                                        Please try again.
+                                    </p>
+                                    <p class="text-right text-muted">
+                                        Error: CNS
+                                    </p>
+                                    <p class="text-right text-muted">
+                                        @*@Model.FormErrors*@
+                                        @Html.ValidationSummary()
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

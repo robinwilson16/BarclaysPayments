@@ -1,0 +1,75 @@
+﻿@page "{id:int?}"
+@model BarclaysPayments.Pages.Notes.IndexModel
+
+@{
+    ViewData["Title"] = "Notes";
+}
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Note[0].TransactionID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Note[0].NoteText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Note[0].IsAlert)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Note[0].CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Note[0].CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Note[0].UpdatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Note[0].UpdatedBy)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Note)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TransactionID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NoteText)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsAlert)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedBy)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.NoteID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.NoteID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.NoteID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="Alerts d-none">
+    @ViewBag.Alerts
+</div>

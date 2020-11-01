@@ -1,0 +1,240 @@
+﻿@page
+@model BarclaysPayments.Pages.IELTSPayments.IndexModel
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].UniquePaymentRef)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].PaymentURL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].PSPID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].ORDERID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].PaymentReasonOther)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].AMOUNT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].CURRENCY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].LANGUAGE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].CN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].Forename)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].EMAIL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].OWNERZIP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].OWNERADDRESS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].OWNERCTY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].OWNERTOWN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].OWNERTELNO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].SHASIGN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].TITLE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].BGCOLOR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].TXTCOLOR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].TBLBGCOLOR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].TBLTXTCOLOR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].BUTTONBGCOLOR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].BUTTONTXTCOLOR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].LOGO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].FONTTYPE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].ACCEPTURL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].DECLINEURL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].EXCEPTIONURL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].CANCELURL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].UpdatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].UpdatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarclaysPayment[0].PaymentReason)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.BarclaysPayment) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UniquePaymentRef)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentURL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PSPID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ORDERID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentReasonOther)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AMOUNT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CURRENCY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LANGUAGE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Forename)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EMAIL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OWNERZIP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OWNERADDRESS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OWNERCTY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OWNERTOWN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OWNERTELNO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SHASIGN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TITLE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BGCOLOR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TXTCOLOR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TBLBGCOLOR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TBLTXTCOLOR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BUTTONBGCOLOR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BUTTONTXTCOLOR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LOGO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FONTTYPE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ACCEPTURL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DECLINEURL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EXCEPTIONURL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CANCELURL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentReason.PaymentReasonID)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.BarclaysPaymentID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.BarclaysPaymentID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.BarclaysPaymentID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

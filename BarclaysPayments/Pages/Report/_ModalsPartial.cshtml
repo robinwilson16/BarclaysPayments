@@ -1,0 +1,139 @@
+﻿<!--Loading Area HTML showing loading animation-->
+<div id="LoadingHTML" class="d-none">
+    <div class="col text-center LoadingArea">
+        <i class="fas fa-spinner fa-spin"></i>
+    </div>
+</div>
+
+<div class="modal fade" id="LoadingModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="LoadingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center Spinner">
+                Loading <i class="fas fa-spinner fa-spin"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalTransaction" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="ModalTransactionLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-white">
+                <h5 class="modal-title" id="ModalTransactionLabel"><i class="fas fa-pound-sign"></i> <span class="title">Payment from Learner/Customer</span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body bg-white">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <nav class="nav nav-tabs" id="PaymentTabs">
+                                <a class="nav-link active" id="TabPayment" data-toggle="tab" href="#TabPaymentContent" role="tab"
+                                   aria-controls="TabPaymentContent" aria-selected="true"><i class="far fa-credit-card"></i> Payment</a>
+                                <a class="nav-link" id="TabNotes" data-toggle="tab" href="#TabNotesContent" role="tab"
+                                   aria-controls="TabNotesContent" aria-selected="false"><i class="fas fa-sticky-note"></i> Notes</a>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="PaymentTabsContent">
+                        <div class="tab-pane fade show active" id="TabPaymentContent" role="tabpanel" aria-labelledby="TabPayment">
+                            <div class="container first">
+                                <div id="TransactionDetails" class="row">
+                                    <div class="col text-center LoadingArea">
+                                        <i class="fas fa-spinner fa-spin"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="TabNotesContent" role="tabpanel" aria-labelledby="TabNotes">
+                            <div class="container first">
+                                <div class="row">
+                                    <div class="col">
+                                        <div id="NoteListArea" class="row table-responsive">
+                                            <table id="NoteList" class="table table-striped table-bordered dataList" aria-label="Notes" style="width: 100%;">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Note</th>
+                                                        <th>Show As Alert?</th>
+                                                        <th>Created Date</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="alert alert-primary" role="alert">
+                                            <button type="button" class="btn btn-primary OpenNoteButton NewNoteButton" data-toggle="modal" data-target="#ModalNote" data-path="Create"><i class="fas fa-sticky-note"></i> Add New Note</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer bg-white">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-sign-out-alt"></i> Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalNote" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="ModalNoteLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-white">
+                <h5 class="modal-title" id="ModalNoteLabel"><i class="fas fa-sticky-note"></i> <span class="title">Add Note</span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body bg-white">
+                <div class="container first">
+                    <div id="NoteDetails" class="row">
+                        <div class="col text-center LoadingArea">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer bg-white">
+                <button type="button" class="btn btn-danger mr-auto ActionButton OpenNoteButton" data-dismiss="modal" data-toggle="modal" data-id="" data-target="#ModalDeleteNote" data-path="Delete" data-loading-text="Delete Note"><i class="fas fa-trash-alt"></i> Delete</button>
+                <button type="button" class="btn btn-primary SaveNoteButton"><i class="fas fa-save"></i> Apply</button>
+                <button type="button" class="btn btn-primary SaveNoteButton" data-dismiss="modal" data-toggle="modal"><i class="fas fa-save"></i> OK</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-sign-out-alt"></i> Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalDeleteNote" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteNoteLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-white">
+                <h5 class="modal-title" id="DeleteNoteModalLabel"><i class="fas fa-user-times"></i> <span class="title">Delete Note</span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body bg-white">
+                <div class="container first">
+                    <div id="DeleteNoteDetails" class="row">
+                        <div class="col text-center LoadingArea">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer bg-white">
+                <button type="button" class="btn btn-danger ActionButton DeleteNoteButton" data-dismiss="modal" data-toggle="modal" data-id="" data-target="#ModalDeleteNote"><i class="fas fa-trash-alt"></i> Yes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-sign-out-alt"></i> Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

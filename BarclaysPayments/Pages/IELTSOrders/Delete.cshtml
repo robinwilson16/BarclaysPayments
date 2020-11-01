@@ -1,0 +1,70 @@
+﻿@page
+@model BarclaysPayments.Pages.IELTSOrders.DeleteModel
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>IELTSOrder</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IELTSOrder.IELTSTestAmount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IELTSOrder.IELTSTestAmount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IELTSOrder.IELTSTestDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IELTSOrder.IELTSTestDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IELTSOrder.TestType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IELTSOrder.TestType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IELTSOrder.PracticeTestAmount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IELTSOrder.PracticeTestAmount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IELTSOrder.PracticeMaterialsAmount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IELTSOrder.PracticeMaterialsAmount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IELTSOrder.PracticeTestBooked)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IELTSOrder.PracticeTestBooked)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IELTSOrder.PracticeMaterialsSent)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IELTSOrder.PracticeMaterialsSent)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IELTSOrder.BarclaysPayment)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IELTSOrder.BarclaysPayment.CN)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IELTSOrder.OrderStatus)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IELTSOrder.OrderStatus.OrderStatusID)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="IELTSOrder.IELTSOrderID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

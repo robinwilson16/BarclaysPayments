@@ -1,0 +1,165 @@
+﻿@page
+@model BarclaysPayments.Pages.Payments.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>BarclaysPayment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BarclaysPayment.BarclaysPaymentID" />
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.PaymentURL" class="control-label"></label>
+                <input asp-for="BarclaysPayment.PaymentURL" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.PaymentURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.PSPID" class="control-label"></label>
+                <input asp-for="BarclaysPayment.PSPID" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.PSPID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.ORDERID" class="control-label"></label>
+                <input asp-for="BarclaysPayment.ORDERID" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.ORDERID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.AMOUNT" class="control-label"></label>
+                <input asp-for="BarclaysPayment.AMOUNT" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.AMOUNT" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.CURRENCY" class="control-label"></label>
+                <input asp-for="BarclaysPayment.CURRENCY" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.CURRENCY" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.LANGUAGE" class="control-label"></label>
+                <input asp-for="BarclaysPayment.LANGUAGE" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.LANGUAGE" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.CN" class="control-label"></label>
+                <input asp-for="BarclaysPayment.CN" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.CN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.EMAIL" class="control-label"></label>
+                <input asp-for="BarclaysPayment.EMAIL" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.EMAIL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.OWNERZIP" class="control-label"></label>
+                <input asp-for="BarclaysPayment.OWNERZIP" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.OWNERZIP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.OWNERADDRESS" class="control-label"></label>
+                <input asp-for="BarclaysPayment.OWNERADDRESS" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.OWNERADDRESS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.OWNERCTY" class="control-label"></label>
+                <input asp-for="BarclaysPayment.OWNERCTY" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.OWNERCTY" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.OWNERTOWN" class="control-label"></label>
+                <input asp-for="BarclaysPayment.OWNERTOWN" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.OWNERTOWN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.OWNERTELNO" class="control-label"></label>
+                <input asp-for="BarclaysPayment.OWNERTELNO" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.OWNERTELNO" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.SHASIGN" class="control-label"></label>
+                <input asp-for="BarclaysPayment.SHASIGN" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.SHASIGN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.TITLE" class="control-label"></label>
+                <input asp-for="BarclaysPayment.TITLE" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.TITLE" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.BGCOLOR" class="control-label"></label>
+                <input asp-for="BarclaysPayment.BGCOLOR" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.BGCOLOR" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.TXTCOLOR" class="control-label"></label>
+                <input asp-for="BarclaysPayment.TXTCOLOR" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.TXTCOLOR" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.TBLBGCOLOR" class="control-label"></label>
+                <input asp-for="BarclaysPayment.TBLBGCOLOR" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.TBLBGCOLOR" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.TBLTXTCOLOR" class="control-label"></label>
+                <input asp-for="BarclaysPayment.TBLTXTCOLOR" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.TBLTXTCOLOR" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.BUTTONBGCOLOR" class="control-label"></label>
+                <input asp-for="BarclaysPayment.BUTTONBGCOLOR" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.BUTTONBGCOLOR" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.BUTTONTXTCOLOR" class="control-label"></label>
+                <input asp-for="BarclaysPayment.BUTTONTXTCOLOR" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.BUTTONTXTCOLOR" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.LOGO" class="control-label"></label>
+                <input asp-for="BarclaysPayment.LOGO" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.LOGO" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.FONTTYPE" class="control-label"></label>
+                <input asp-for="BarclaysPayment.FONTTYPE" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.FONTTYPE" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.ACCEPTURL" class="control-label"></label>
+                <input asp-for="BarclaysPayment.ACCEPTURL" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.ACCEPTURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.DECLINEURL" class="control-label"></label>
+                <input asp-for="BarclaysPayment.DECLINEURL" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.DECLINEURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.EXCEPTIONURL" class="control-label"></label>
+                <input asp-for="BarclaysPayment.EXCEPTIONURL" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.EXCEPTIONURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarclaysPayment.CANCELURL" class="control-label"></label>
+                <input asp-for="BarclaysPayment.CANCELURL" class="form-control" />
+                <span asp-validation-for="BarclaysPayment.CANCELURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
