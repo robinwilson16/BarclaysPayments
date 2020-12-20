@@ -50,8 +50,6 @@ namespace BarclaysPayments.Pages.Payments
             SHAPassphrase = _configuration.GetSection("SystemSettings")["SHAPassphrase"];
             string paymentSystem = _configuration.GetSection("SystemSettings")["PaymentSystem"];
 
-            string paymentURL = null;
-
             if (paymentSystem == "LIVE")
             {
                 FormDestinationID = _configuration.GetSection("SystemSettings")["PaymentURLLive"];
@@ -123,7 +121,7 @@ namespace BarclaysPayments.Pages.Payments
             BarclaysPayment.EXCEPTIONURL = "https://www.wlc.ac.uk";
             BarclaysPayment.CANCELURL = "https://www.wlc.ac.uk";
             BarclaysPayment.CreatedDate = DateTime.Now;
-            BarclaysPayment.CreatedBy = User.Identity.Name.Split('\\').Last();
+            BarclaysPayment.CreatedBy = Identity.GetUserName(User, _context);
 
             _context.BarclaysPayment.Add(BarclaysPayment);
             await _context.SaveChangesAsync();

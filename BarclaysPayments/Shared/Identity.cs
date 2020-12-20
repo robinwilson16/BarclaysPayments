@@ -13,10 +13,15 @@ namespace BarclaysPayments.Shared
     {
         public static string GetUserName(ClaimsPrincipal user, ApplicationDbContext _context)
         {
-            var userName = user.Identity.Name.ToString();
-
-            //In case cannot obtain current user then set to this default user as created by field is required
-            userName = "UNKNOWN";
+            string userName = null;
+            try
+            {
+                userName = user.Identity.Name.Split('\\').Last();
+            }
+            catch
+            {
+                userName = "UNKNOWN";
+            }
 
             return userName;
         }

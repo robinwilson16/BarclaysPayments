@@ -48,8 +48,6 @@ namespace BarclaysPayments.Pages.IELTSPayments
             bool DuplicateCertificate,
             bool TransferFees,
             bool EnquiryOnResult,
-            bool ieltsexam,
-            bool ieltsexam2,
             int formId,
             string oid
             )
@@ -116,7 +114,7 @@ namespace BarclaysPayments.Pages.IELTSPayments
                 OrderStatusID = 1 //To-Do
             };
 
-            if (ielts == "ieltsexam" || ieltsexam == true)
+            if (ielts == "ieltsexam")
             {
                 IELTSTestAmount = await _context.IELTSPrice
                     .Where(p => p.Code == "ieltsexam")
@@ -125,10 +123,19 @@ namespace BarclaysPayments.Pages.IELTSPayments
                 IELTSOrder.IELTSTestAmount = IELTSTestAmount.Price;
                 IELTSTestAmountValue = IELTSTestAmount.Price;
             }
-            else if (ielts == "ieltsexam2" || ieltsexam2 == true)
+            else if (ielts == "ieltsexam2")
             {
                 IELTSTestAmount = await _context.IELTSPrice
                     .Where(p => p.Code == "ieltsexam2")
+                    .FirstOrDefaultAsync();
+
+                IELTSOrder.IELTSTestAmount = IELTSTestAmount.Price;
+                IELTSTestAmountValue = IELTSTestAmount.Price;
+            }
+            else if (ielts == "ieltsexam3")
+            {
+                IELTSTestAmount = await _context.IELTSPrice
+                    .Where(p => p.Code == "ieltsexam3")
                     .FirstOrDefaultAsync();
 
                 IELTSOrder.IELTSTestAmount = IELTSTestAmount.Price;
