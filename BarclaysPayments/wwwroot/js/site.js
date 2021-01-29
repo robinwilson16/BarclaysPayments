@@ -1,100 +1,112 @@
-﻿$("#MakePayment").submit(function (event) {
-    event.preventDefault();
+﻿var makePayment = document.getElementById('MakePayment');
+if (makePayment) {
+    makePayment.addEventListener('submit', function (event) {
+        event.preventDefault();
 
-    if ($("#MakePayment").valid() === true) {
-        let formData = $('#MakePayment').serialize();
-        let sHAPassphrase = $('#SHAPassphrase').val();
-        let formDestinationID = $('#FormDestinationID').val();
+        if ($("#MakePayment").valid() === true) {
 
-        let formItems = formData.split("&");
+            let formData = new FormData(makePayment);
+            let sHAPassphrase = document.getElementById('#SHAPassphrase').value;
+            let formDestinationID = document.getElementById('#FormDestinationID').value;
 
-        let epdqItems = {};
-        let epdqItemsEncrypt = "";
-        formItems.sort();
+            let formItems = formData.split("&");
 
-        for (const element of formItems) {
-            let epdqItem = element.replace("BarclaysPayment.", "");
-            epdqItem = epdqItem.replace(/%20/g, " ");
-            epdqItem = epdqItem.replace(/%40/g, "@");
-            let splitPos = epdqItem.indexOf("=");
-            let epdqLen = epdqItem.length;
-            let includeField = true;
+            let epdqItems = {};
+            let epdqItemsEncrypt = "";
+            formItems.sort();
 
-            if (element.indexOf("__RequestVerificationToken") > -1) {
-                includeField = false;
-            }
-            else if (element.indexOf("PaymentReason") > -1) {
-                includeField = false;
-            }
-            else if (element.indexOf("PaymentReasonOther") > -1) {
-                includeField = false;
-            }
+            for (const element of formItems) {
+                let epdqItem = element.replace("BarclaysPayment.", "");
+                epdqItem = epdqItem.replace(/%20/g, " ");
+                epdqItem = epdqItem.replace(/%40/g, "@");
+                let splitPos = epdqItem.indexOf("=");
+                let epdqLen = epdqItem.length;
+                let includeField = true;
 
-            //Discard empty elements
-            if (splitPos < epdqLen - 1 && includeField === true) {
-                let key = epdqItem.substring(0, splitPos);
-                let value = epdqItem.substring(splitPos + 1, epdqLen);
-
-                //If item is amount this must be multiplied by 100 as decimals are not allowed
-                if (key === "AMOUNT") {
-                    value = value * 100;
-                    epdqItem = key + "=" + value;
+                if (element.indexOf("__RequestVerificationToken") > -1) {
+                    includeField = false;
+                }
+                else if (element.indexOf("PaymentReason") > -1) {
+                    includeField = false;
+                }
+                else if (element.indexOf("PaymentReasonOther") > -1) {
+                    includeField = false;
                 }
 
-                epdqItems[key] = value;
+                //Discard empty elements
+                if (splitPos < epdqLen - 1 && includeField === true) {
+                    let key = epdqItem.substring(0, splitPos);
+                    let value = epdqItem.substring(splitPos + 1, epdqLen);
 
-                if (epdqItems === null) {
-                    //First item
-                    epdqItemsEncrypt = epdqItem + sHAPassphrase;
-                }
-                else {
-                    //Rest of items
-                    epdqItemsEncrypt += epdqItem + sHAPassphrase;
+                    //If item is amount this must be multiplied by 100 as decimals are not allowed
+                    if (key === "AMOUNT") {
+                        value = value * 100;
+                        epdqItem = key + "=" + value;
+                    }
+
+                    epdqItems[key] = value;
+
+                    if (epdqItems === null) {
+                        //First item
+                        epdqItemsEncrypt = epdqItem + sHAPassphrase;
+                    }
+                    else {
+                        //Rest of items
+                        epdqItemsEncrypt += epdqItem + sHAPassphrase;
+                    }
                 }
             }
+
+            //For debugging
+            //let createPayment = document.getElementById('CreatePayment');
+            //createPayment.appendChild(epdqItemsEncrypt);
+
+            epdqItems["SHASIGN"] = sha256(epdqItemsEncrypt);
+
+            postAndRedirect(formDestinationID, epdqItems);
         }
-
-        //For debugging
-        //$('#CreatePayment').append(epdqItemsEncrypt);
-
-        epdqItems["SHASIGN"] = sha256(epdqItemsEncrypt);
-
-        postAndRedirect(formDestinationID, epdqItems);
-    }
-});
+    })
+}
 
 function postAndRedirect(url, postData) {
-    var postFormStr = "<form method='POST' action='" + url + "'>\n";
+    let postForm = document.createElement("form");
+    postForm.method = "POST";
+    postForm.action = url;   
+    postForm.innerHTML = "";
 
     for (var key in postData) {
         if (postData.hasOwnProperty(key)) {
-            postFormStr += "<input type='hidden' name='" + key + "' value='" + postData[key] + "'></input>";
+            postForm.innerHTML += "<input type='hidden' name='" + key + "' value='" + postData[key] + "'></input>";
         }
     }
 
-    postFormStr += "</form>";
+    document.body.appendChild(postForm);
 
-    var formElement = $(postFormStr);
-
-    $('body').append(formElement);
-    $(formElement).submit();
+    postForm.submit();
 }
 
-$(".CopyPaymentLink").click(function (event) {
-    let url = $(".PaymentURL").text();
 
-    navigator.clipboard.writeText(url).then(function () {
-        /* clipboard successfully set */
-    }, function () {
-        /* clipboard write failed */
+var copyPaymentLinks = document.querySelectorAll('.CopyPaymentLink');
+copyPaymentLinks.forEach(function (button) {
+    button.addEventListener('click', function (event) {
+        let url = document.querySelector(".PaymentURL").innerHTML;
+
+        navigator.clipboard.writeText(url).then(function () {
+            /* clipboard successfully set */
+        }, function () {
+            /* clipboard write failed */
+        });
     });
 });
 
-$(".OpenPaymentLink").click(function (event) {
-    let url = $(".PaymentURL").text();
+var openPaymentLinks = document.querySelectorAll('.OpenPaymentLink');
+openPaymentLinks.forEach(function (button) {
+    button.addEventListener('click', function (event) {
+        let url = document.querySelector(".PaymentURL").innerHTML;
 
-    var win = window.open(url, '_blank');
-    win.focus();
+        var win = window.open(url, '_blank');
+        win.focus();
+    });
 });
 
 /**
