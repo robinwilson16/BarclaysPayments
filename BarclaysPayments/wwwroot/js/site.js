@@ -4,62 +4,93 @@ if (makePayment) {
         event.preventDefault();
 
         if ($("#MakePayment").valid() === true) {
-            let formData = $('#MakePayment').serialize();
-            //let formData = new FormData(makePayment);
-
             let sHAPassphrase = document.getElementById('SHAPassphrase').value;
             let formDestinationID = document.getElementById('FormDestinationID').value;
 
-            let formItems = formData.split("&");
-            //let formItems = formData.entries();
-
             let epdqItems = {};
             let epdqItemsEncrypt = "";
-            formItems.sort();
-            //for (let [key, value] of formData.entries()) {
-            //    console.log(`${key}: ${value}`);
-            //}
-            for (const element of formItems) {
-                let epdqItem = element.replace("BarclaysPayment.", "");
-                epdqItem = epdqItem.replace(/%20/g, " ");
-                epdqItem = epdqItem.replace(/%40/g, "@");
-                let splitPos = epdqItem.indexOf("=");
-                let epdqLen = epdqItem.length;
+
+            //New way
+            let formData = new FormData(makePayment);
+            const formItems = Array.from(formData.entries());
+            const sortedItems = formItems.sort(
+                ([leftKey], [rightKey]) => leftKey > rightKey ? 1 : -1
+            )
+
+            for (let [key, value] of sortedItems) {
+                //console.log(`${key}: ${value}`);
+                //Remove BarclaysPayment. from start of each form item
+                key = key.replace("BarclaysPayment.", "");
                 let includeField = true;
 
-                if (element.indexOf("__RequestVerificationToken") > -1) {
+                //Define form fields to ignore and not include
+                if (key.indexOf("__RequestVerificationToken") > -1) {
                     includeField = false;
                 }
-                else if (element.indexOf("PaymentReason") > -1) {
+                else if (key.indexOf("PaymentReason") > -1) {
                     includeField = false;
                 }
-                else if (element.indexOf("PaymentReasonOther") > -1) {
+                else if (key.indexOf("PaymentReasonOther") > -1) {
+                    includeField = false;
+                }
+                else if (value.length == 0) {
                     includeField = false;
                 }
 
                 //Discard empty elements
-                if (splitPos < epdqLen - 1 && includeField === true) {
-                    let key = epdqItem.substring(0, splitPos);
-                    let value = epdqItem.substring(splitPos + 1, epdqLen);
-
+                if (includeField === true) {
                     //If item is amount this must be multiplied by 100 as decimals are not allowed
                     if (key === "AMOUNT") {
                         value = value * 100;
-                        epdqItem = key + "=" + value;
                     }
 
+                    let epdqItem = key + "=" + value;
+
+                    //Add item to array and encrypted string
                     epdqItems[key] = value;
-
-                    if (epdqItems === null) {
-                        //First item
-                        epdqItemsEncrypt = epdqItem + sHAPassphrase;
-                    }
-                    else {
-                        //Rest of items
-                        epdqItemsEncrypt += epdqItem + sHAPassphrase;
-                    }
+                    epdqItemsEncrypt += epdqItem + sHAPassphrase;
                 }
             }
+
+            //Old way
+            //let formData = $('#MakePayment').serialize();
+            //let formItems = formData.split("&");
+
+            //formItems.sort();
+
+            //for (let element of formItems) {
+            //    let epdqItem = element.replace("BarclaysPayment.", "");
+            //    epdqItem = epdqItem.replace(/%20/g, " ");
+            //    epdqItem = epdqItem.replace(/%40/g, "@");
+            //    let splitPos = epdqItem.indexOf("=");
+            //    let epdqLen = epdqItem.length;
+            //    let includeField = true;
+
+            //    if (element.indexOf("__RequestVerificationToken") > -1) {
+            //        includeField = false;
+            //    }
+            //    else if (element.indexOf("PaymentReason") > -1) {
+            //        includeField = false;
+            //    }
+            //    else if (element.indexOf("PaymentReasonOther") > -1) {
+            //        includeField = false;
+            //    }
+
+            //    //Discard empty elements
+            //    if (splitPos < epdqLen - 1 && includeField === true) {
+            //        let key = epdqItem.substring(0, splitPos);
+            //        let value = epdqItem.substring(splitPos + 1, epdqLen);
+
+            //        //If item is amount this must be multiplied by 100 as decimals are not allowed
+            //        if (key === "AMOUNT") {
+            //            value = value * 100;
+            //            epdqItem = key + "=" + value;
+            //        }
+
+            //        epdqItems[key] = value;
+            //        epdqItemsEncrypt += epdqItem + sHAPassphrase;
+            //    }
+            //}
 
             //For debugging
             //let createPayment = document.getElementById('MakePayment');
@@ -68,7 +99,6 @@ if (makePayment) {
             //createPayment.appendChild(epdqData);
 
             epdqItems["SHASIGN"] = sha256(epdqItemsEncrypt);
-
             postAndRedirect(formDestinationID, epdqItems);
         }
     })

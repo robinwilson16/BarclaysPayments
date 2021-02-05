@@ -68,6 +68,12 @@ namespace BarclaysPayments.Pages.IELTSPayments
                 FormDestinationID = _configuration.GetSection("SystemSettings")["PaymentURLTest"];
             }
 
+            string userID = "IELTS";
+            if (User.Identity.Name != null)
+            {
+                userID = User.Identity.Name.Split('\\').Last();
+            }
+
             BarclaysPayment = new BarclaysPayment
             {
                 UniquePaymentRef = Guid.NewGuid(),
@@ -100,7 +106,7 @@ namespace BarclaysPayments.Pages.IELTSPayments
                 EXCEPTIONURL = "https://www.wlc.ac.uk",
                 CANCELURL = "https://www.wlc.ac.uk",
                 CreatedDate = DateTime.Now,
-                CreatedBy = "IELTS"
+                CreatedBy = userID
             };
 
             _context.BarclaysPayment.Add(BarclaysPayment);
@@ -229,6 +235,12 @@ namespace BarclaysPayments.Pages.IELTSPayments
             //                            .Select(x => x.ErrorMessage));
             //}
 
+            string userID = "IELTS";
+            if(User.Identity.Name != null)
+            {
+                userID = User.Identity.Name.Split('\\').Last();
+            }
+
             BarclaysPayment.UniquePaymentRef = Guid.NewGuid();
             BarclaysPayment.PSPID = _configuration.GetSection("SystemSettings")["PSPID"];
             BarclaysPayment.CURRENCY = _configuration.GetSection("SystemSettings")["Currency"];
@@ -247,7 +259,8 @@ namespace BarclaysPayments.Pages.IELTSPayments
             BarclaysPayment.EXCEPTIONURL = "https://www.wlc.ac.uk";
             BarclaysPayment.CANCELURL = "https://www.wlc.ac.uk";
             BarclaysPayment.CreatedDate = DateTime.Now;
-            BarclaysPayment.CreatedBy = User.Identity.Name.Split('\\').Last();
+            //BarclaysPayment.CreatedBy = User.Identity.Name.Split('\\').Last();
+            BarclaysPayment.CreatedBy = userID;
 
             _context.BarclaysPayment.Add(BarclaysPayment);
             await _context.SaveChangesAsync();
