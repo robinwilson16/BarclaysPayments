@@ -4,17 +4,21 @@ if (makePayment) {
         event.preventDefault();
 
         if ($("#MakePayment").valid() === true) {
+            let formData = $('#MakePayment').serialize();
+            //let formData = new FormData(makePayment);
 
-            let formData = new FormData(makePayment);
-            let sHAPassphrase = document.getElementById('#SHAPassphrase').value;
-            let formDestinationID = document.getElementById('#FormDestinationID').value;
+            let sHAPassphrase = document.getElementById('SHAPassphrase').value;
+            let formDestinationID = document.getElementById('FormDestinationID').value;
 
             let formItems = formData.split("&");
+            //let formItems = formData.entries();
 
             let epdqItems = {};
             let epdqItemsEncrypt = "";
             formItems.sort();
-
+            //for (let [key, value] of formData.entries()) {
+            //    console.log(`${key}: ${value}`);
+            //}
             for (const element of formItems) {
                 let epdqItem = element.replace("BarclaysPayment.", "");
                 epdqItem = epdqItem.replace(/%20/g, " ");
@@ -58,8 +62,10 @@ if (makePayment) {
             }
 
             //For debugging
-            //let createPayment = document.getElementById('CreatePayment');
-            //createPayment.appendChild(epdqItemsEncrypt);
+            //let createPayment = document.getElementById('MakePayment');
+            //let epdqData = document.createElement("div");
+            //epdqData.innerHTML = epdqItemsEncrypt;
+            //createPayment.appendChild(epdqData);
 
             epdqItems["SHASIGN"] = sha256(epdqItemsEncrypt);
 
@@ -84,7 +90,6 @@ function postAndRedirect(url, postData) {
 
     postForm.submit();
 }
-
 
 var copyPaymentLinks = document.querySelectorAll('.CopyPaymentLink');
 copyPaymentLinks.forEach(function (button) {
